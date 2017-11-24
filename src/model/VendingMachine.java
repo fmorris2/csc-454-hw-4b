@@ -94,7 +94,7 @@ public class VendingMachine {
 				break;
 			}
 		}
-		scheduleNewTimeAdvance();
+		timeAdvance();
 	}
 	
 	private void deltaInt() {
@@ -122,7 +122,7 @@ public class VendingMachine {
 				break;
 			}
 		}
-		scheduleNewTimeAdvance();
+		timeAdvance();
 	}
 	
 	private void deltaConf(List<Character> input) {
@@ -185,7 +185,7 @@ public class VendingMachine {
 		return EVENT_QUEUE.stream().noneMatch(d -> !(d instanceof TimeAdvanceEvent));
 	}
 	
-	private void scheduleNewTimeAdvance() {
+	private void timeAdvance() {
 		EVENT_QUEUE.removeIf(event -> event instanceof TimeAdvanceEvent);
 		DiscreteEvent newTimeAdvance = generateTimeAdvanceEvent();
 		EVENT_QUEUE.add(newTimeAdvance);
