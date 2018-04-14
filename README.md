@@ -1,5 +1,5 @@
 # CSC-454 HW4B
-```
+
 This is your first homework on discrete event simulation. We will use a slightly modified version of the vending machine, since that is already familiar to you.
 
 Implement and simulate an atomic model of a vending machine. The machine sells coffee and accepts only nickels, dimes, and quarters. When $1 has been inserted, the machine dispenses a cup of coffee. The machine accepts one coin at a time (note the difference from last time), and does not have a cancel button. If there is no input to the machine for two seconds after a previous input, it dispenses coffee(s) (if the value of the entered coins is sufficient), and also returns change.
@@ -22,4 +22,3 @@ The external state transision function is deltaext({q, n, d, v}, e, x) =
 {q, n+1, d, v+5} if x == n
 {q, n, d+1, v+10} if x == d
 The confluent state transition function is deltacon({q, n, d, v}, x) = deltaext(deltaint({q, n, d, v}), 2.0, x). This simply means that we have no special handling for the confluent case, and do the obvious: apply the internal function, then apply the external function. Note that this is ONE step in the total delta function, so there is no time advance between the application of deltaint and deltaext.
-```
